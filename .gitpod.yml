@@ -1,4 +1,18 @@
-
+tasks:
+  - name: "Dependencies and Database"
+    init: npm install
+    command: npm run backend
+    openMode: split-right
+  - name: "Tests"
+    command: npm run test
+    openMode: split-right
+  - name: "Dev"
+    command: npm run start
+    openMode: split-right
+# Ports to expose on workspace startup
+ports:
+  - port: 3000
+    onOpen: open-preview
 vscode:
   extensions:
     - mgmcdermott.vscode-language-babel
