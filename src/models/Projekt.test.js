@@ -1,8 +1,8 @@
 import { getSnapshot, onSnapshot, onPatch, types } from "mobx-state-tree"
-import { Haus, Raum, Element, Bauteil } from "./Haus"
+import { Projekt, Raum, Element, Bauteil } from "./Projekt"
 
 it("Test calculated properties of Raum", () => {
-    const haus = Haus.create({
+    const haus = Projekt.create({
         Bauteildefinitionen : [{
             id: "1",
             Name: "AW",

@@ -81,7 +81,7 @@ export const Element = types.model({
     }
 }))
 
-export const Haus = types.model({
+export const Projekt = types.model({
     Bauteildefinitionen: types.array(Bauteil),
     Räume: types.array(Raum)
 })
