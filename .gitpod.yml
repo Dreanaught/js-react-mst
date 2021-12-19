@@ -1,12 +1,16 @@
 tasks:
   - name: "Dependencies and Database"
-    init: npm install
+    init: > 
+      npm install &&
+      gp sync-done bundle # 'bundle' is an arbitrary name I picked
     command: npm run backend
     openMode: split-right
   - name: "Tests"
+    init: gp sync-await bundle # wait for the above 'init' to finish
     command: npm run test
     openMode: split-right
   - name: "Dev"
+    init: gp sync-await bundle # wait for the above 'init' to finish
     command: npm run start
     openMode: split-right
 # Ports to expose on workspace startup
