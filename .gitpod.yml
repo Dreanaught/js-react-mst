@@ -1,0 +1,5 @@
+
+vscode:
+  extensions:
+    - mgmcdermott.vscode-language-babel
+    - orta.vscode-jest
