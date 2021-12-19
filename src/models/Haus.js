@@ -1,6 +1,16 @@
 import { destroy, getParent, types } from "mobx-state-tree"
 
 /**
+ * Definiert ein Bauteil (z.B. Außenwand)
+ */
+export const Bauteil = types.model({
+    id: types.identifier, // reference id
+    Name: types.string, // kurzname des Bauteils z.B. AW ^= Ausenwand
+    Beschreibung: types.maybe(types.string), // Beschreibung des Bauteils z.B. Ausenwand, saniert
+    uWert: types.number // U-Wert des Bauteils als gesammtes
+})
+
+/**
  * Definition eines Raums
  */
 export const Raum = types.model({
@@ -41,7 +51,7 @@ export const Raum = types.model({
  */
 export const Element = types.model({
     Orientierung: types.string, // ist eigentlich eine Referenz auf ein enum
-    Baueteil: types.string, // von Hand eintragen, ist eigentlich eine Referent auf ein Bauteil
+    Bauteil: types.reference(Bauteil), // von Hand eintragen, ist eigentlich eine Referent auf ein Bauteil
     Anzahl: types.number,
     Breite: types.number,
     Länge_Höhe: types.number, // teilen und types.maype verwenden
@@ -70,3 +80,8 @@ export const Element = types.model({
         return Math.ceil(self.Bauteilfläche * self.korrigierter_uWert * (getParent(self,2).Auslegungsinnentemperatur - self.angrenzende_Temperatur))
     }
 }))
+
+export const Haus = types.model({
+    Bauteildefinitionen: types.array(Bauteil),
+    Räume: types.array(Raum)
+})
