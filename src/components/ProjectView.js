@@ -1,12 +1,13 @@
 import React from "react"
 import { observer } from "mobx-react"
-import { Bauteil } from "../models/Projekt"
 
-const ProjectView = ({project, readonly}) => (
+import BauteilView from "./BauteilView"
+
+const ProjectView = ({project}) => (
     <div className="list">
         <ul>
-            {project.Bauteile.map((bauteil, idx) => (
-                <BauteilView key={idx} bauteil={bauteil} readonly={readonly}/>
+            {project.Bauteildefinitionen.map((bauteil, idx) => (
+                <BauteilView key={idx} bauteil={bauteil}/>
             ))}
         </ul>
     </div>
