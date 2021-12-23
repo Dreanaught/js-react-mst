@@ -4,18 +4,18 @@ import './assets/index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
+import { getSnapshot } from 'mobx-state-tree';
+
 import {Projekt} from './models/Projekt'
 
-const project = Projekt.create({
+let initialState = {
   Bauteildefinitionen : [{
-      id: "1",
-      Name: "AW",
-      Beschreibung: "Außenwand",
+      id: 1,
+      Kurzbezeichner: "AW",
       uWert: 1.3
   },{
-    id: "1",
-    Name: "AF",
-    Beschreibung: "Außenfenster",
+    id: 2,
+    Kurzbezeichner: "AF",
     uWert: 1.3
 }],
   Räume : [{
@@ -42,14 +42,36 @@ const project = Projekt.create({
           }
       ]
   }]
-})
+}
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App project={project}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+let project = Projekt.create(initialState)
+
+function renderApp (){
+  ReactDOM.render(
+    <React.StrictMode>
+      <App project={project}/>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
+
+// Änderungen im Modell und in den View-Definitionen bubble-up zu dieser Stelle
+if(module.hot){
+  // wenn die view-Komponenten geändert werden soll die Anwendung neu gerendert werden, der MST bleibt gleich
+  module.hot.accept(["./components/App"], () =>{
+    renderApp()
+  })
+
+  // wenn die model-Komponenten geändert wird soll der MST anhand eines Snapshots aktualisiert werden
+  // anschließend soll die Anwendung neu gerendert werden
+  module.hot.accept(["./models/Projekt"], () => {
+    const snapshot = getSnapshot(project)
+    project = Projekt.create(snapshot)
+    renderApp()
+  })
+}
+
+renderApp()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,14 +1,5 @@
 import { destroy, getParent, types } from "mobx-state-tree"
-
-/**
- * Definiert ein Bauteil (z.B. Außenwand)
- */
-export const Bauteil = types.model({
-    id: types.identifier, // reference id
-    Name: types.string, // kurzname des Bauteils z.B. AW ^= Ausenwand
-    Beschreibung: types.maybe(types.string), // Beschreibung des Bauteils z.B. Ausenwand, saniert
-    uWert: types.number // U-Wert des Bauteils als gesammtes
-})
+import { Bauteil } from "./Bauteil"
 
 /**
  * Definition eines Raums
