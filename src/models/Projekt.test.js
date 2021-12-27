@@ -33,6 +33,9 @@ it("Test calculated properties of Raum", () => {
             ]
         }]
     })
+
+    // NormAußentemperatur
+    expect(haus.Norm_Außentemperatur).toBe(-16) // if it is not set it is -16
     
     // Berechnungen im Raum
     expect(haus.Räume[0].Raumfläche).toBe(2*5)
