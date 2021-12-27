@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <h1 className="App-title">Projekt</h1>
 
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
           <Tab eventKey="home" title="Home">
             <ProjectView project={this.props.project} />
           </Tab>
