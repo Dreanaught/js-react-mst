@@ -2,7 +2,7 @@ import { destroy, types } from "mobx-state-tree"
 import { Element } from "./Element"
 
 export const Raum = types.model({
-    Name: types.string,
+    Name: types.identifier,
     Geschoss: types.string,
     Auslegungsinnentemperatur: types.number,
     Raumbreite: types.number,
