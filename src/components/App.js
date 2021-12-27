@@ -5,25 +5,30 @@ import Tabs from 'react-bootstrap/Tabs'
 import { Tab } from 'react-bootstrap';
 
 import ProjectView from './ProjectView';
+import { observer } from 'mobx-react';
+import RaumView from './RaumView';
 
 class App extends Component {
   render() {
+    const project = this.props.project
     return (
       <div className="App">
         <h1 className="App-title">Projekt</h1>
 
-        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
-          <Tab eventKey="home" title="Home">
-            <ProjectView project={this.props.project} />
+        <Tabs defaultActiveKey="projekt">
+          <Tab eventKey="projekt" title="Projekt">
+            <ProjectView project={project} />
           </Tab>
-          <Tab eventKey="profile" title="Profile">
-          </Tab>
-          <Tab eventKey="contact" title="Contact" disabled>
-          </Tab>
+          {/* That key={raum.Name} is required for react not to throw an error*/}
+          {Array.from(project.Räume.values()).map((raum, idx) => (
+            <Tab title={raum.Name} eventKey={raum.Name} key={raum.Name}>
+              <RaumView key={idx} raum={raum}/>
+            </Tab>
+          ))}
         </Tabs>
       </div>
     )
   }
 }
 
-export default App;
+export default observer(App);
