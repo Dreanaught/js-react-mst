@@ -1,0 +1,45 @@
+import { destroy, types } from "mobx-state-tree"
+import { Element } from "./Element"
+
+export const Raum = types.model({
+    Name: types.string,
+    Geschoss: types.string,
+    Auslegungsinnentemperatur: types.number,
+    Raumbreite: types.number,
+    Raumlänge: types.number,
+    Raumhöhe: types.number,
+    Deckendicke: types.number,
+    Elemente: types.array(Element)
+})
+.actions( self => ({
+    addElement(element) {
+        self.Elemente.push(element)
+    },
+    removeElement(element){
+        destroy(element)
+    }
+}))
+.views(self => ({
+    get Raumfläche () {
+        return self.Raumbreite * self.Raumlänge
+    },
+    get Geschosshöhe () {
+        return self.Raumhöhe + self.Deckendicke
+    },
+    get Raumvolumen() {
+        return self.Raumfläche * self.Raumhöhe
+    },
+    get Raumhüllfläche() {
+        return self.Raumhöhe * self.Raumbreite * 2 + self.Raumhöhe * self.Raumlänge * 2 + self.Raumfläche * 2
+    },
+    // lala
+    get NormHeizlast(){
+        return self.NormTransmissionswäremeverlust + self.NormLüftungswäremeverlust
+    },
+    get NormTransmissionswäremeverlust (){
+        return 0
+    },
+    get NormLüftungswäremeverlust (){
+        return 0
+    }
+}))
