@@ -3,26 +3,29 @@ import { observer } from "mobx-react"
 
 import BauteilView from "./BauteilView"
 
-const ProjectView = ({project}) => (
+const ProjectView = ({ project }) => (
     <div className="list">
-    <ul>
-        <span>Norm-Außentemperatur: {project.Norm_Außentemperatur}</span>
-    </ul>
-    <ul>
-        <span>Nom-Heizlast: {project.NormHeizlast}</span>
-    </ul>
-    <ul>
-        <span>Nom-Transmissionswäremeverlust: {project.Transmissionswärmeverlust}</span>
-    </ul>
-    <ul>
-        <span>Nom-Lüftungswäremeverlust: {project.Lüftungswäremeverlust}</span>
-    </ul>
-    <ul>
-        <span>Wäremebrückenzuschlag: {project.Wäremebrückenzuschlag}</span>
-    </ul>
+        <ul>
+            <li>
+                <span>Norm-Außentemperatur: {project.Norm_Außentemperatur}</span>
+            </li>
+            <li>
+                <span>Nom-Heizlast: {project.NormHeizlast}</span>
+            </li>
+            <li>
+                <span>Nom-Transmissionswäremeverlust: {project.Transmissionswärmeverlust}</span>
+            </li>
+            <li>
+                <span>Nom-Lüftungswäremeverlust: {project.Lüftungswäremeverlust}</span>
+            </li>
+            <li>
+                <span>Wäremebrückenzuschlag: {project.Wäremebrückenzuschlag}</span>
+            </li>
+        </ul>
+        <button onClick={project.addRoom}>Neuer Raum</button>
         <ul>
             {project.Bauteildefinitionen.map((bauteil, idx) => (
-                <BauteilView key={idx} bauteil={bauteil}/>
+                <BauteilView key={idx} bauteil={bauteil} />
             ))}
         </ul>
     </div>
