@@ -17,6 +17,8 @@ tasks:
 ports:
   - port: 3000
     onOpen: open-preview
+  - port: 3001 # jsDbServer
+    onOpen: ignore
 vscode:
   extensions:
     - mgmcdermott.vscode-language-babel
