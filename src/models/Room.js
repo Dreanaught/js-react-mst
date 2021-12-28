@@ -1,4 +1,4 @@
-import { destroy, types } from "mobx-state-tree"
+import { destroy, getParent, types } from "mobx-state-tree"
 import { Element } from "./Element"
 
 export const Raum = types.model({
@@ -41,5 +41,8 @@ export const Raum = types.model({
     },
     get NormLüftungswäremeverlust (){
         return 0
+    },
+    get NormAußentemperatur(){
+        return getParent(self, 2).Norm_Außentemperatur
     }
 }))
