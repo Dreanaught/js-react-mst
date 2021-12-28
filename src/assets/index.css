@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=BioRhyme|Mogra');
 
 body {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto 0 auto;
   padding: 0;
 }
@@ -41,7 +41,16 @@ body, select, input, button {
   margin: 0;
 }
 
+th {
+  font-weight: normal; /* un-bold*/
+}
 
+/* rotate table headers counter clockwise 90 degree */
+tr.rotate th {
+  writing-mode: vertical-rl; /*sideways top to bottom*/
+  transform: rotate(180deg); /* rotate 180 degree because crome does not support sideways*/
+  text-align: left; /*align text from bottom up*/
+}
 
 .list {
   max-width: 500px;
