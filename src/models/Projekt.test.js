@@ -26,9 +26,7 @@ it("Test calculated properties of Raum", () => {
                     Abzugsfläche: undefined,
                     grenzt_an: "e",
                     angrenzende_Temperatur: -10,
-                    temperatur_Anpassung: 1,
-                    uWert_Bauteil: 0.18,
-                    Wärmebrückenzuschlag: 0.05
+                    temperatur_Anpassung: 1
                 }
             ]
         }]
@@ -50,5 +48,5 @@ it("Test calculated properties of Raum", () => {
     expect(haus.Räume[0].Elemente[0].Transmissionswärmeverlust).toBeDefined()
     expect(haus.Räume[0].Elemente[0].Transmissionswärmeverlust).not.toBeNaN()
     expect(haus.Räume[0].Elemente[0].Transmissionswärmeverlust).not.toBeNull()
-    expect(haus.Räume[0].Elemente[0].Transmissionswärmeverlust).toBe(37)
+    expect(haus.Räume[0].Elemente[0].Transmissionswärmeverlust).toBe(223)
 })

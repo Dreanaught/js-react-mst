@@ -179,13 +179,13 @@ const RaumView = ({ raum }) => (
                         <td>{element.angrenzendeTemperatur}</td>
                         <td>{element.temperatur_Anpassungen}</td>
                         <td>{element.Bauteil.uWert}</td>
-                        <td>{element.Wärmebrückenzuschlag}</td>
+                        <td>{element.korrekturwertWäremebrücken}</td>
                         <td>{element.korrigierter_uWert.toFixed(2)}</td>
                         <td>{element.Wärmeverlustkoeffizient.toFixed(2)}</td>
                         <td>{element.Transmissionswärmeverlust}</td>
                     </tr>
                 ))}
-                
+
             </tbody>
         </Table>
     </div>

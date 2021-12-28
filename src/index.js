@@ -36,9 +36,7 @@ let initialState = {
               Abzugsfläche: undefined,
               grenzt_an: "e",
               angrenzende_Temperatur: -10,
-              temperatur_Anpassung: 1,
-              uWert_Bauteil: 0.18,
-              Wärmebrückenzuschlag: 0.05
+              temperatur_Anpassung: 1
           }
       ]
   }]

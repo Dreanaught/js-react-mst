@@ -10,9 +10,7 @@ export const Element = types.model({
     Abzugsfläche: types.maybe(types.number), //über parent auf den folgenden einträgen ziehen, bis eine andre orientierung kommt, müsste also hier in einer noch zu definierenden view stehen
     grenzt_an: types.string, // ist eigentlich eine Referenz auf ein enum
     angrenzende_Temperatur: types.number, // von Hand eintragen, ergibt sich später aus der Zeichnung des Gebäudes
-    temperatur_Anpassung: types.number, // von Hand eintragen, ist eigentlich ein errechneter Wert
-    uWert_Bauteil: types.number, // von Hand eintragen, ist eigentlich der uWert aus Referenz Bauteil
-    Wärmebrückenzuschlag: types.number, // von Hand eintragen,
+    temperatur_Anpassung: types.number // von Hand eintragen, ist eigentlich ein errechneter Wert
 })
 .views( self => ({
     get Bruttofläche () {
@@ -32,8 +30,11 @@ export const Element = types.model({
             return self.Bruttofläche
         }
     },
+    get korrekturwertWäremebrücken(){
+        return getParent(self, 4).Wäremebrückenzuschlag
+    },
     get korrigierter_uWert() {
-        return self.uWert_Bauteil + self.Wärmebrückenzuschlag
+        return self.Bauteil.uWert + self.korrekturwertWäremebrücken
     },
     get Wärmeverlustkoeffizient(){
         return self.Nettofläche * self.korrigierter_uWert
