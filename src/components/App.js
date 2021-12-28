@@ -22,7 +22,7 @@ class App extends Component {
           {/* That key={raum.Name} is required for react not to throw an error*/}
           {Array.from(project.Räume.values()).map((raum, idx) => (
             <Tab title={raum.Name} eventKey={raum.Name} key={raum.Name}>
-              <RaumView key={idx} raum={raum}/>
+              <RaumView raum={raum}/>
             </Tab>
           ))}
         </Tabs>
