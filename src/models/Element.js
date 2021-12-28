@@ -25,8 +25,18 @@ export const Element = types.model({
         }
         return self.Bruttofläche
     },
+    get Nettofläche() {
+        if(self.Abzugsfläche){
+            return self.Bruttofläche - self.Abzugsfläche
+        } else {
+            return self.Bruttofläche
+        }
+    },
     get korrigierter_uWert() {
         return self.uWert_Bauteil + self.Wärmebrückenzuschlag
+    },
+    get Wärmeverlustkoeffizient(){
+        return self.Nettofläche * self.korrigierter_uWert
     },
     get Transmissionswärmeverlust() {
         return Math.ceil(self.Bauteilfläche * self.korrigierter_uWert * (getParent(self,2).Auslegungsinnentemperatur - self.angrenzende_Temperatur))
