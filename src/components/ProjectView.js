@@ -4,7 +4,7 @@ import { observer } from "mobx-react"
 import BauteilView from "./BauteilView"
 import { Button, Col, Container, Row } from "react-bootstrap"
 
-const ProjectView = ({ project }) => (
+const ProjectView = ({ project, changeTab }) => (
     <Container fluid="true">
         <Row>
             <Col xs sm="auto">Norm-Außentemperatur</Col>
@@ -34,7 +34,7 @@ const ProjectView = ({ project }) => (
         {/* räume */}
         <Row><Col xs sm="auto">Räume</Col></Row>
         {project.Räume.map((raum, idx) => (
-            <Row key={idx} onClick={() => (console.log("raum row clicked"))}>
+            <Row key={idx} onClick={() => (changeTab(raum.Name))}>
                 <Col xs sm="auto">Raumname</Col>
                 <Col xs sm="auto">{raum.Name}</Col>
                 <Col />

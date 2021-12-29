@@ -17,7 +17,7 @@ class App extends Component {
 
         <Tabs defaultActiveKey="projekt">
           <Tab eventKey="projekt" title="Projekt">
-            <ProjectView project={project} />
+            <ProjectView project={project} changeTab={this.changeTab}/>
           </Tab>
           {/* That key={raum.Name} is required for react not to throw an error*/}
           {Array.from(project.Räume.values()).map((raum, idx) => (
@@ -28,6 +28,10 @@ class App extends Component {
         </Tabs>
       </div>
     )
+  }
+
+  changeTab(tabKey){
+    console.log("ChangeTab called "+ tabKey)
   }
 }
 
