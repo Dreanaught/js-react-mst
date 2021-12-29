@@ -1,4 +1,4 @@
-import { destroy, getParent, types } from "mobx-state-tree"
+import { types } from "mobx-state-tree"
 import { Bauteil } from "./Bauteil"
 import { Raum } from "./Room"
 
