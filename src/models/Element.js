@@ -14,7 +14,7 @@ export const Element = types.model({
 })
 .views( self => ({
     get Bruttofläche () {
-        return self.Breite * self.Länge_Höhe
+        return self.Breite * self.Länge_Höhe * self.Anzahl
     },
     get Bauteilfläche () {
         // Abzugsfläche ist im Modell als type.maybe definiert und kann daher undefined sein
