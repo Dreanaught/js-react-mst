@@ -16,6 +16,7 @@ let initialState = {
   },{
     id: 2,
     Kurzbezeichner: "AF",
+    Kommentar: "Kommentar",
     uWert: 1.3
 }],
   Räume : [{
