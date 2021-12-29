@@ -5,7 +5,7 @@ class ElementView extends Component  {
     render() {
         const { element } = this.props
         return (
-            <tr>
+            <tr onClick={() => { console.log('clicked')}}>
                 <td>{element.Orientierung}</td>
                 <td>{element.Bauteil.Kurzbezeichner}</td>
                 <td>{element.Anzahl}</td>
