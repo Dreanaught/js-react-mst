@@ -1,6 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react"
 import { Col, Container, Row, Table } from "react-bootstrap"
+import ElementView from "./ElementView"
 
 const RaumView = ({ raum }) => (
     <div>
@@ -166,24 +167,7 @@ const RaumView = ({ raum }) => (
             <tbody>
                 {/* insert elements */}
                 {Array.from(raum.Elemente.values()).map((element, idx) => (
-                    <tr key={idx}>
-                        <td>{element.Orientierung}</td>
-                        <td>{element.Bauteil.Kurzbezeichner}</td>
-                        <td>{element.Anzahl}</td>
-                        <td>{element.Breite}</td>
-                        <td>{element.Länge_Höhe}</td>
-                        <td>{element.Bruttofläche}</td>
-                        <td>{element.Abzugsfläche}</td>
-                        <td>{element.Nettofläche}</td>
-                        <td>{element.grenzt_an}</td>
-                        <td>{element.angrenzendeTemperatur}</td>
-                        <td>{element.temperatur_Anpassungen}</td>
-                        <td>{element.Bauteil.uWert}</td>
-                        <td>{element.korrekturwertWäremebrücken}</td>
-                        <td>{element.korrigierter_uWert.toFixed(2)}</td>
-                        <td>{element.Wärmeverlustkoeffizient.toFixed(2)}</td>
-                        <td>{element.Transmissionswärmeverlust}</td>
-                    </tr>
+                    <ElementView key={idx} element={element} />
                 ))}
 
             </tbody>
