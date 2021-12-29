@@ -37,7 +37,7 @@ export const Raum = types.model({
         return self.NormTransmissionswäremeverlust + self.NormLüftungswäremeverlust
     },
     get NormTransmissionswäremeverlust (){
-        return 0
+        return self.Elemente.reduce((sum, entry) => sum + entry.Transmissionswärmeverlust, 0)
     },
     get NormLüftungswäremeverlust (){
         return 0
