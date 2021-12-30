@@ -6,58 +6,89 @@ import reportWebVitals from './reportWebVitals';
 
 import { getSnapshot } from 'mobx-state-tree';
 
-import {Projekt} from './models/Projekt'
+import { Projekt } from './models/Projekt'
 
 let initialState = {
-  Bauteildefinitionen : [{
-      id: 1,
-      Kurzbezeichner: "AW",
-      uWert: 1.3
-  },{
+  Bauteildefinitionen: [{
+    id: 1,
+    Kurzbezeichner: "AW",
+    uWert: 1.3
+  }, {
     id: 2,
     Kurzbezeichner: "AF",
     Kommentar: "Kommentar",
     uWert: 1.3
-}],
-  Räume : [{
-      Name: "Raum1",
-      Geschoss: "EG",
-      Auslegungsinnentemperatur: 20,
-      Raumbreite: 2,
-      Raumlänge: 5,
-      Raumhöhe: 2.5,
-      Deckendicke: 0.15,
-      Elemente: [
-          {
-              Orientierung: "S",
-              Bauteil: "1",
-              Anzahl: 1,
-              Breite: 2,
-              Länge_Höhe: 2.65,
-              Abzugsfläche: undefined,
-              grenzt_an: "e",
-              angrenzende_Temperatur: -10,
-              temperatur_Anpassung: 1
-          }
-      ]
+  }],
+  Räume: [{
+    Name: "Raum1",
+    Geschoss: "EG",
+    Auslegungsinnentemperatur: 20,
+    Raumbreite: 2,
+    Raumlänge: 5,
+    Raumhöhe: 2.5,
+    Deckendicke: 0.15,
+    Elemente: [
+      {
+        Orientierung: "S",
+        Bauteil: "1",
+        Anzahl: 1,
+        Breite: 2,
+        Länge_Höhe: 2.65,
+        Abzugsfläche: undefined,
+        grenzt_an: "e",
+        angrenzende_Temperatur: -10,
+        temperatur_Anpassung: 1
+      },{
+        Orientierung: "",
+        Bauteil: "2",
+        Anzahl: 1,
+        Breite: 1,
+        Länge_Höhe: 1.3,
+        Abzugsfläche: undefined,
+        grenzt_an: "e",
+        angrenzende_Temperatur: -10,
+        temperatur_Anpassung: 1
+      }
+    ]
+  }, {
+    Name: "Raum2",
+    Geschoss: "EG",
+    Auslegungsinnentemperatur: 20,
+    Raumbreite: 2,
+    Raumlänge: 5,
+    Raumhöhe: 2.5,
+    Deckendicke: 0.15,
+    Elemente: [
+      {
+        Orientierung: "S",
+        Bauteil: "1",
+        Anzahl: 1,
+        Breite: 2,
+        Länge_Höhe: 2.65,
+        Abzugsfläche: undefined,
+        grenzt_an: "e",
+        angrenzende_Temperatur: -10,
+        temperatur_Anpassung: 1
+      }
+    ]
   }]
 }
 
 let project = Projekt.create(initialState)
 
-function renderApp (){
+function renderApp() {
   ReactDOM.render(
     <React.StrictMode>
-      <App project={project}/>
+      <App project={project} />
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
 
 // Änderungen im Modell und in den View-Definitionen bubble-up zu dieser Stelle
-if(module.hot){
+if (module.hot) {
   // wenn die view-Komponenten geändert werden soll die Anwendung neu gerendert werden, der MST bleibt gleich
-  module.hot.accept(["./components/App"], () =>{
+  module.hot.accept(["./components/App"], () => {
     renderApp()
   })
 
