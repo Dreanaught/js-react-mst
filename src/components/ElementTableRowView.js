@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import { observer } from "mobx-react"
 
-class ElementView extends Component  {
+class ElementTableRowView extends Component  {
     render() {
         const { element } = this.props
         return (
@@ -27,4 +27,4 @@ class ElementView extends Component  {
     }
 }
 
-export default observer(ElementView)
+export default observer(ElementTableRowView)

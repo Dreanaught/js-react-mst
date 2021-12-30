@@ -1,7 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react"
 import { Col, Container, Row, Table } from "react-bootstrap"
-import ElementView from "./ElementView"
+import ElementTableRowView from "./ElementTableRowView"
 
 const RaumView = ({ raum }) => (
     <div>
@@ -167,7 +167,7 @@ const RaumView = ({ raum }) => (
             <tbody>
                 {/* insert elements */}
                 {Array.from(raum.Elemente.values()).map((element, idx) => (
-                    <ElementView key={idx} element={element} />
+                    <ElementTableRowView key={idx} element={element} />
                 ))}
 
             </tbody>
