@@ -12,10 +12,10 @@ class ElementView extends Component  {
                 <td>{element.Breite}</td>
                 <td>{element.Länge_Höhe}</td>
                 <td>{element.Bruttofläche}</td>
-                <td>{element.Abzugsfläche}</td>
+                <td>{element.Abzugsfläche?element.Abzugsfläche:'-'}</td>
                 <td>{element.Nettofläche}</td>
                 <td>{element.grenzt_an}</td>
-                <td>{element.angrenzendeTemperatur}</td>
+                <td>{element.angrenzendeTemperatur?element.angrenzendeTemperatur:'-'}</td>
                 <td>{element.temperatur_Anpassung.toFixed(2)}</td>
                 <td>{element.Bauteil.uWert}</td>
                 <td>{element.korrekturwertWäremebrücken}</td>
