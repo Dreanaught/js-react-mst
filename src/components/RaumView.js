@@ -2,7 +2,7 @@ import React from "react"
 import { observer } from "mobx-react"
 import { Col, Container, Row, Table } from "react-bootstrap"
 import ElementTableRowView from "./ElementTableRowView"
-import ElementEdit from "./ElementEdit"
+import ElementAdd from "./ElementAdd"
 
 const RaumView = ({ raum }) => (
     <div>
@@ -173,8 +173,8 @@ const RaumView = ({ raum }) => (
 
             </tbody>
         </Table>
-        {/* add or edit elements */}
-        <ElementEdit/>
+        {/* add elements */}
+        <ElementAdd raum={raum} />
     </div>
 )
 

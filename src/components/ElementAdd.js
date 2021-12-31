@@ -1,25 +1,43 @@
 import React, { Component } from "react"
 import { observer } from "mobx-react"
 import { Button, Modal } from "react-bootstrap";
+import { Element } from "../models/Element";
 
-class ElementEdit extends Component {
+class ElementAdd extends Component {
+    
+
     constructor(props) {
         super(props);
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        this.handleSave = this.handleSave.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
 
         this.state = {
             show: false
         };
+
+        this.state = {
+            element: Element.create({
+                Orientierung:"",
+                Bauteil: 1,
+                Anzahl: 1,
+                Breite: 0,
+                Länge_Höhe: 0,
+                grenzt_an: "",
+                angrenzende_Temperatur: 20,
+                temperatur_Anpassung: 0
+            })
+        }
     }
 
     handleClose() {
         this.setState({ show: false });
     }
 
-    handleSave() {
+    handleAdd() {
+        //this.props.raum.addElement(this.state.element)
+        
         this.setState({ show: false });
     }
 
@@ -32,7 +50,7 @@ class ElementEdit extends Component {
         return (
             <div>
                 <Button bsstyle="primary" bssize="large" onClick={this.handleShow}>
-                    Launch demo modal
+                    Add Element
                 </Button>
                 <Modal centered show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
@@ -42,7 +60,7 @@ class ElementEdit extends Component {
                     <Modal.Body>One fine body... {element.Abzugsfläche}</Modal.Body>
 
                     <Modal.Footer>
-                        <Button bsstyle="primary" onClick={this.handleSave}>Save</Button>
+                        <Button bsstyle="primary" onClick={this.handleAdd}>Add</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
@@ -50,4 +68,4 @@ class ElementEdit extends Component {
     }
 }
 
-export default observer(ElementEdit)
+export default observer(ElementAdd)
