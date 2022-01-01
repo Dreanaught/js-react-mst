@@ -74,7 +74,7 @@ let initialState = {
   }]
 }
 
-let project = Projekt.create(initialState)
+let project = window.project = Projekt.create(initialState)
 
 function renderApp() {
   ReactDOM.render(
@@ -96,7 +96,7 @@ if (module.hot) {
   // anschließend soll die Anwendung neu gerendert werden
   module.hot.accept(["./models/Projekt"], () => {
     const snapshot = getSnapshot(project)
-    project = Projekt.create(snapshot)
+    project = window.project = Projekt.create(snapshot)
     renderApp()
   })
 }
