@@ -8,71 +8,7 @@ import { getSnapshot } from 'mobx-state-tree';
 
 import { Projekt } from './models/Projekt'
 
-let initialState = {
-  Bauteildefinitionen: [{
-    id: 1,
-    Kurzbezeichner: "AW",
-    uWert: 1.3
-  }, {
-    id: 2,
-    Kurzbezeichner: "AF",
-    Kommentar: "Kommentar",
-    uWert: 1.3
-  }],
-  Räume: [{
-    Name: "Raum1",
-    Geschoss: "EG",
-    Auslegungsinnentemperatur: 20,
-    Raumbreite: 2,
-    Raumlänge: 5,
-    Raumhöhe: 2.5,
-    Deckendicke: 0.15,
-    Elemente: [
-      {
-        Orientierung: "S",
-        Bauteil: "1",
-        Anzahl: 1,
-        Breite: 2,
-        Länge_Höhe: 2.65,
-        Abzugsfläche: undefined,
-        grenzt_an: "e",
-        angrenzende_Temperatur: -10,
-        temperatur_Anpassung: 1
-      },{
-        Orientierung: "",
-        Bauteil: "2",
-        Anzahl: 1,
-        Breite: 1,
-        Länge_Höhe: 1.3,
-        Abzugsfläche: undefined,
-        grenzt_an: "e",
-        angrenzende_Temperatur: -10,
-        temperatur_Anpassung: 1
-      }
-    ]
-  }, {
-    Name: "Raum2",
-    Geschoss: "EG",
-    Auslegungsinnentemperatur: 20,
-    Raumbreite: 2,
-    Raumlänge: 5,
-    Raumhöhe: 2.5,
-    Deckendicke: 0.15,
-    Elemente: [
-      {
-        Orientierung: "S",
-        Bauteil: "1",
-        Anzahl: 1,
-        Breite: 2,
-        Länge_Höhe: 2.65,
-        Abzugsfläche: undefined,
-        grenzt_an: "e",
-        angrenzende_Temperatur: -10,
-        temperatur_Anpassung: 1
-      }
-    ]
-  }]
-}
+let initialState = {}
 
 let project = window.project = Projekt.create(initialState)
 
