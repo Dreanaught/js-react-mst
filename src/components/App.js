@@ -7,6 +7,7 @@ import { Tab } from 'react-bootstrap';
 import ProjectView from './ProjectView';
 import { observer } from 'mobx-react';
 import RaumView from './RaumView';
+import NewProject from './project/NewProject';
 
 class App extends Component {
   constructor() {
@@ -26,6 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="App-title">Projekt</h1>
+        <NewProject />
 
         <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
           <Tab eventKey="projekt" title="Projekt">
