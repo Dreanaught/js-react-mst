@@ -43,6 +43,12 @@ it("Test calculated properties of Raum", () => {
     // Zugriff auf Werte aus Referenz
     expect(haus.Räume[0].Elemente[0].Bauteil).toBe(haus.Bauteildefinitionen[0])
 
+    // Bauteil berechnete Properties
+    expect(haus.Bauteildefinitionen[0]).toBeDefined()
+    expect(haus.Bauteildefinitionen[0].isExterior).toBeTruthy()
+    expect(haus.Bauteildefinitionen[0].isInterior).toBeFalsy()
+    expect(haus.Bauteildefinitionen[0].isDoorOrWindow).toBeFalsy()
+
     // Berechnung in den Elementen
     expect(haus.Räume[0].Elemente.length).toBe(1)
     expect(haus.Räume[0].Elemente[0].Transmissionswärmeverlust).toBeDefined()
