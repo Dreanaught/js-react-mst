@@ -1,11 +1,10 @@
 import React, { Component } from "react"
 import { observer } from "mobx-react"
-import { Button, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { Element } from "../models/Element";
+import { Formik } from "formik";
 
 class ElementAdd extends Component {
-    
-
     constructor(props) {
         super(props);
 
@@ -19,7 +18,7 @@ class ElementAdd extends Component {
 
         this.state = {
             element: Element.create({
-                Orientierung:"",
+                Orientierung: "",
                 Bauteil: 1,
                 Anzahl: 1,
                 Breite: 0,
@@ -37,7 +36,7 @@ class ElementAdd extends Component {
 
     handleAdd() {
         //this.props.raum.addElement(this.state.element)
-        
+
         this.setState({ show: false });
     }
 
@@ -53,16 +52,42 @@ class ElementAdd extends Component {
                     Add Element
                 </Button>
                 <Modal centered show={this.state.show} onHide={this.handleClose}>
+
                     <Modal.Header closeButton>
                         <Modal.Title>Modal title</Modal.Title>
                     </Modal.Header>
-
-                    <Modal.Body>One fine body... {element.Abzugsfläche}</Modal.Body>
+                    <Modal.Body>
+                        <Formik
+                            initialValues={{
+                                'Orientierung': '',
+                                'Bauteil': undefined,
+                                'Anzahl': 1,
+                                'Breite': '',
+                                'Länge_Höhe': '',
+                                'grenzt_am': '',
+                                'angrenzende_Temperatur': '',
+                                'temperatur_Anpassung': ''
+                            }}
+                        > {formik => (
+                            <Form noValidate>
+                                <Form.Group controlId="Orientierung">
+                                    <Form.Label>Orientierung</Form.Label>
+                                    <Form.Control
+                                        name="orientierung"
+                                        type="text"
+                                        value={formik.values.Orientierung}
+                                    />
+                                </Form.Group>
+                                {/* weitere Felder */}
+                            </Form>)}
+                        </Formik>
+                    </Modal.Body>
 
                     <Modal.Footer>
                         <Button bsstyle="primary" onClick={this.handleAdd}>Add</Button>
                     </Modal.Footer>
                 </Modal>
+
             </div>
         )
     }
