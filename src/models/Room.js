@@ -44,5 +44,8 @@ export const Raum = types.model({
     },
     get NormAußentemperatur(){
         return getParent(self, 2).Norm_Außentemperatur
+    },
+    get Bauelemente(){
+        return getParent(self, 2).Bauteildefinitionen
     }
 }))
