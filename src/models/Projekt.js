@@ -41,5 +41,8 @@ export const Projekt = types
             }catch (e){
                 console.log("Error on saving project", e)
             }
-        })
+        }),
+        addBauteil(bauteil){
+            self.Bauteildefinitionen.push(bauteil)
+        },
     }))
