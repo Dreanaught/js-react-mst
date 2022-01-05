@@ -18,7 +18,7 @@ const ElementAddForm = (props) => {
         },
         validationSchema: Yup.object({
             bauteil: Yup.number()
-                .required(),
+                .required('Required'),
             anzahl: Yup.number()
                 .min(1, 'Must be greater equal 1')
                 .required('Required'),
@@ -33,27 +33,36 @@ const ElementAddForm = (props) => {
         }),
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-        },
+        }
     });
     return (
         <Form
             noValidate
             onSubmit={formik.handleSubmit}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}>
+        >
             <Form.Group controlId="bauteil">
                 <Form.Label>Bauteil</Form.Label>
                 <Form.Select
                     value={formik.values.bauteil}
-                    isInvalid={!!formik.errors.bauteil}>
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    isInvalid={formik.touched.bauteil && !!formik.errors.bauteil}>
+                    <option>Wähle Bauteil</option>
                     {Array.from(bauelemente).map((bauelement, idx) => (
                         <option key={idx} value={bauelement.id}>{bauelement.Kurzbezeichner + ' ' + bauelement.uWert + ' W\m²K'}</option>
                     ))}
                 </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.bauteil}
+                </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="orientierung">
                 <Form.Label>Orientierung</Form.Label>
-                <Form.Select>
+                <Form.Select
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.orientierung}
+                    isInvalid={formik.touched.orientierung && !!formik.errors.orientierung}>
                     <option value=''></option>
                     <option value='N'>N</option>
                     <option value='S'>S</option>
@@ -61,16 +70,20 @@ const ElementAddForm = (props) => {
                     <option value='W'>W</option>
                     <option value='H'>H</option>
                 </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.orientierung}
+                </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="anzahl">
                 <Form.Label>Anzahl</Form.Label>
                 <Form.Control
                     type="number"
+                    onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.anzahl}
-                    isInvalid={!!formik.errors.anzahl}
+                    isInvalid={formik.touched.anzahl && !!formik.errors.anzahl}
                 />
-                <Form.Control.Feedback type="invalid" tooltip>
+                <Form.Control.Feedback type="invalid">
                     {formik.errors.anzahl}
                 </Form.Control.Feedback>
             </Form.Group>
@@ -80,10 +93,8 @@ const ElementAddForm = (props) => {
                     name="firstName"
                     type="text"
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder={raum.Name}
                     value={formik.values.firstName}
-                    isInvalid={!!formik.errors.firstName}
+                    isInvalid={formik.touched.firstName && !!formik.errors.firstName}
                 />
                 <Form.Control.Feedback type="invalid">
                     {formik.errors.firstName}
@@ -98,7 +109,7 @@ const ElementAddForm = (props) => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.lastName}
-                    isInvalid={!!formik.errors.lastName}
+                    isInvalid={formik.touched.lastName && !!formik.errors.lastName}
                 />
                 <Form.Control.Feedback type="invalid">
                     {formik.errors.lastName}
