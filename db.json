@@ -4,13 +4,13 @@
     "Wäremebrückenzuschlag": 0.1,
     "Bauteildefinitionen": [
       {
-        "id": 1,
+        "id": "1",
         "Kurzbezeichner": "AW",
         "Kommentar": "",
         "uWert": 1.3
       },
       {
-        "id": 2,
+        "id": "2",
         "Kurzbezeichner": "AF",
         "Kommentar": "Kommentar",
         "uWert": 1.3

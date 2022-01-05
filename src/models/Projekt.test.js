@@ -4,7 +4,7 @@ import { Projekt, Raum, Element, Bauteil } from "./Projekt"
 it("Test calculated properties of Raum", () => {
     const haus = Projekt.create({
         Bauteildefinitionen : [{
-            id: 1,
+            id: '1',
             Kurzbezeichner: "AW",
             uWert: 1.3
         }],
