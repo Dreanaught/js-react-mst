@@ -3,6 +3,7 @@ import { observer } from "mobx-react"
 
 import BauteilView from "./BauteilView"
 import { Button, Col, Container, Row } from "react-bootstrap"
+import BauteilAdd from "./BauteilAdd"
 
 const ProjectView = ({ project, changeTab }) => (
     <Container fluid="true">
@@ -47,7 +48,7 @@ const ProjectView = ({ project, changeTab }) => (
             </Col>
         </Row>
         {/* Bauteile */}
-        <Row><Col xs sm="auto">Bauteildefinitionen</Col></Row>
+        <Row><Col xs sm="auto">U-Wert Definitionen</Col></Row>
         {project.Bauteildefinitionen.map((bauteil, idx) => (
             <Row key={idx} onClick={() => (console.log("bauteil row clicked"))}>
                 <Col xs sm="auto">id: {bauteil.id}</Col>
@@ -59,7 +60,7 @@ const ProjectView = ({ project, changeTab }) => (
         ))}
         <Row>
             <Col>
-                <Button onClick={() => (console.log("bauteil neu clicked"))}> Neues Bauteil</Button>
+                <BauteilAdd project={project}/>
             </Col>
         </Row>
     </Container>
