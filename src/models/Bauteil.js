@@ -14,6 +14,11 @@ export const Bauteil = types.model({
     },
     get isDoorOrWindow(){
         const kurzbezeichner = self.Kurzbezeichner
-        return kurzbezeichner.includes('F') ||  kurzbezeichner.includes('T')
-    }
+        return !self.isHorizontal && (kurzbezeichner.includes('F') ||  kurzbezeichner.includes('T'))
+    },
+    get isHorizontal(){
+        const kurzbezeichner = self.Kurzbezeichner
+        /* DA^=Dach, D^=Decke, FB^=Fußboden */
+        return kurzbezeichner.startsWith('D') || kurzbezeichner.startsWith('F')
+    },
 }))
