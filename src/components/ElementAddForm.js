@@ -49,7 +49,7 @@ const ElementAddForm = (props) => {
                     isInvalid={formik.touched.bauteil && !!formik.errors.bauteil}>
                     <option>Wähle Bauteil</option>
                     {Array.from(bauelemente).map((bauelement, idx) => (
-                        <option key={idx} value={bauelement.id}>{bauelement.Kurzbezeichner + ' ' + bauelement.uWert + ' W\m²K'}</option>
+                        <option key={idx} value={bauelement.id}>{bauelement.Kurzbezeichner + ' ' + bauelement.uWert + ' W\\m²K'}</option>
                     ))}
                 </Form.Select>
                 <Form.Control.Feedback type="invalid">
