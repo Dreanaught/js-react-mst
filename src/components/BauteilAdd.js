@@ -22,7 +22,7 @@ class BauteilAdd extends Component {
     }
 
     handleAdd(values) {
-        alert(JSON.stringify(values, null, 2));
+        //alert(JSON.stringify(values, null, 2));
         this.props.project.addBauteil(Bauteil.create(values))
         //this.props.raum.addElement(this.state.element)
         //this.setState({ show: false });
