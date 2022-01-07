@@ -51,7 +51,6 @@ const ProjectView = ({ project, changeTab }) => (
         <Row><Col xs sm="auto">U-Wert Definitionen</Col></Row>
         {project.Bauteildefinitionen.map((bauteil, idx) => (
             <Row key={idx} onClick={() => (console.log("bauteil row clicked"))}>
-                <Col xs sm="auto">id: {bauteil.id}</Col>
                 <Col xs sm="auto">Name:  {bauteil.Kurzbezeichner}</Col>
                 {bauteil.Kommentar && <Col>Kommentar: {bauteil.Kommentar}</Col>}
                 {!bauteil.Kommentar && <Col />}
