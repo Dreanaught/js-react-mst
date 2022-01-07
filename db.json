@@ -6,13 +6,7 @@
       {
         "id": "1",
         "Kurzbezeichner": "AW",
-        "Kommentar": "",
-        "uWert": 1.3
-      },
-      {
-        "id": "2",
-        "Kurzbezeichner": "AF",
-        "Kommentar": "Kommentar",
+        "Kommentar": "Außenwand 30",
         "uWert": 1.3
       },
       {
@@ -38,6 +32,30 @@
         "Kurzbezeichner": "AT",
         "Kommentar": "Tür 1.09x2.28",
         "uWert": 0.91
+      },
+      {
+        "id": "89aebdd0-f7de-439c-a87d-a6b931a61253",
+        "Kurzbezeichner": "AF",
+        "Kommentar": "Fenster 1.14x1.35",
+        "uWert": 0.92
+      },
+      {
+        "id": "8f1ee959-24da-49cc-af5b-9c7342b11677",
+        "Kurzbezeichner": "AT",
+        "Kommentar": "Tür 1.09x2.28",
+        "uWert": 0.91
+      },
+      {
+        "id": "aada5492-dfd6-4022-85cd-54e227df1892",
+        "Kurzbezeichner": "IW",
+        "Kommentar": "Innenwand 11.5",
+        "uWert": 1.67
+      },
+      {
+        "id": "f182871d-369f-4432-9d64-af95d2896781",
+        "Kurzbezeichner": "IW",
+        "Kommentar": "Innenwand 24",
+        "uWert": 1.59
       }
     ],
     "Räume": [
@@ -56,16 +74,6 @@
             "Anzahl": 1,
             "Breite": 2,
             "Länge_Höhe": 2.65,
-            "grenzt_an": "e",
-            "angrenzende_Temperatur": -10,
-            "temperatur_Anpassung": 1
-          },
-          {
-            "Orientierung": "",
-            "Bauteil": "2",
-            "Anzahl": 1,
-            "Breite": 1,
-            "Länge_Höhe": 1.3,
             "grenzt_an": "e",
             "angrenzende_Temperatur": -10,
             "temperatur_Anpassung": 1
