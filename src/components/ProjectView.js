@@ -50,11 +50,12 @@ const ProjectView = ({ project, changeTab }) => (
         {/* Bauteile */}
         <Row><Col xs sm="auto">U-Wert Definitionen</Col></Row>
         {project.Bauteildefinitionen.map((bauteil, idx) => (
-            <Row key={idx} onClick={() => (console.log("bauteil row clicked"))}>
-                <Col xs sm="auto">Name:  {bauteil.Kurzbezeichner}</Col>
+            <Row key={idx}>
+                <Col xs sm="auto" onClick={() => (console.log("bauteil row clicked"))}>Name:  {bauteil.Kurzbezeichner}</Col>
                 {bauteil.Kommentar && <Col>Kommentar: {bauteil.Kommentar}</Col>}
                 {!bauteil.Kommentar && <Col />}
                 <Col xs sm="auto last">U-Wert: {bauteil.uWert}</Col>
+                <Col xs sm="auto"><CloseButton onClick={bauteil.remove}/></Col>
             </Row>
         ))}
         <Row>
