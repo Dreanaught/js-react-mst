@@ -32,7 +32,7 @@ const ElementAddForm = (props) => {
             email: Yup.string().email('Invalid email address').required('Required'),
         }),
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            //alert(JSON.stringify(values, null, 2));
         }
     });
     return (
