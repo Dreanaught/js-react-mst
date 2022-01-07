@@ -2,7 +2,7 @@ import React from "react"
 import { observer } from "mobx-react"
 
 import BauteilView from "./BauteilView"
-import { Button, Col, Container, Row } from "react-bootstrap"
+import { Button, CloseButton, Col, Container, Row } from "react-bootstrap"
 import BauteilAdd from "./BauteilAdd"
 
 const ProjectView = ({ project, changeTab }) => (
@@ -35,11 +35,11 @@ const ProjectView = ({ project, changeTab }) => (
         {/* räume */}
         <Row><Col xs sm="auto">Räume</Col></Row>
         {project.Räume.map((raum, idx) => (
-            <Row key={idx} onClick={() => (changeTab(raum.Name))}>
-                <Col xs sm="auto">Raumname</Col>
-                <Col xs sm="auto">{raum.Name}</Col>
+            <Row key={idx}>
+                <Col xs sm="auto" onClick={() => (changeTab(raum.Name))}>{raum.Name}</Col>
                 <Col />
                 <Col xs sm="auto">Heizlast: {raum.NormHeizlast}</Col>
+                <Col xs sm="auto"><CloseButton onClick={raum.remove}/></Col>
             </Row>
         ))}
         <Row>

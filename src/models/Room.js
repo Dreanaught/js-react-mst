@@ -17,6 +17,9 @@ export const Raum = types.model({
     },
     removeElement(element){
         destroy(element)
+    },
+    remove(){
+        getParent(self, 2).remove(self)
     }
 }))
 .views(self => ({

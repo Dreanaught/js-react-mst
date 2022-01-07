@@ -1,4 +1,4 @@
-import { applySnapshot, flow, getSnapshot, onSnapshot, types } from "mobx-state-tree"
+import { applySnapshot, destroy, flow, getSnapshot, onSnapshot, types } from "mobx-state-tree"
 import { Bauteil } from "./Bauteil"
 import { Raum } from "./Room"
 
@@ -42,7 +42,12 @@ export const Projekt = types
                 console.log("Error on saving project", e)
             }
         }),
+        /* Bauteil */
         addBauteil(bauteil){
             self.Bauteildefinitionen.push(bauteil)
         },
+        /* Räume */
+        remove(raum){
+            destroy(raum)
+        }
     }))
