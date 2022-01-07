@@ -14,6 +14,30 @@
         "Kurzbezeichner": "AF",
         "Kommentar": "Kommentar",
         "uWert": 1.3
+      },
+      {
+        "id": "14ec58c8-d854-492a-b27b-80f07e714c37",
+        "Kurzbezeichner": "AF",
+        "Kommentar": "Fenster 1.10x1.35",
+        "uWert": 0.92
+      },
+      {
+        "id": "338e005c-0ff8-47d9-bd19-d435987db479",
+        "Kurzbezeichner": "AF",
+        "Kommentar": "Fenster 0.48x0.72",
+        "uWert": 1.15
+      },
+      {
+        "id": "941f3c58-dd5e-42ae-9d43-9814f111a862",
+        "Kurzbezeichner": "AF",
+        "Kommentar": "Fenster 1.14x1.35",
+        "uWert": 0.92
+      },
+      {
+        "id": "3aca5ad9-884e-4853-a864-4c1de14b71c6",
+        "Kurzbezeichner": "AT",
+        "Kommentar": "Tür 1.09x2.28",
+        "uWert": 0.91
       }
     ],
     "Räume": [
