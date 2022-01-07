@@ -22,6 +22,14 @@ const BauteilAddForm = (props) => {
         onSubmit: values => {
             //alert(JSON.stringify(values, null, 2));
             props.onSubmit(values)
+            formik.resetForm({
+                values: {
+                    id: uuidv4(),
+                    Kurzbezeichner: 'AW',
+                    Kommentar: '',
+                    uWert: ''
+                }
+            })
         }
     });
 
@@ -40,8 +48,10 @@ const BauteilAddForm = (props) => {
                     isInvalid={formik.touched.Kurzbezeichner && !!formik.errors.Kurzbezeichner}>
                     <option value='AW'>AußenWand</option>
                     <option value='AF'>AußenFenster</option>
+                    <option value='AT'>AußenTür</option>
                     <option value='IW'>InnenWand</option>
                     <option value='IF'>InnenFenster</option>
+                    <option value='IT'>InnenTür</option>
                     <option value='D'>Decke</option>
                     <option value='FB'>Fußboden</option>
                     <option value='DA'>Dach</option>
