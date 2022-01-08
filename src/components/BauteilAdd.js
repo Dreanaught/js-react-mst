@@ -37,7 +37,7 @@ class BauteilAdd extends Component {
         return (
             <div>
                 <Button bsstyle="primary" bssize="large" onClick={this.handleShow}>
-                    Neues U-Wert Definition
+                    Neue U-Wert Definition
                 </Button>
                 <Modal
                     centered
