@@ -33,7 +33,6 @@ class BauteilAdd extends Component {
     }
 
     render() {
-        const project = this.props.project
         return (
             <div>
                 <Button bsstyle="primary" bssize="large" onClick={this.handleShow}>
