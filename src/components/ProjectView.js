@@ -4,6 +4,7 @@ import { observer } from "mobx-react"
 import BauteilView from "./BauteilView"
 import { Button, CloseButton, Col, Container, Row } from "react-bootstrap"
 import BauteilAdd from "./BauteilAdd"
+import RaumAdd from "./RaumAdd"
 
 const ProjectView = ({ project, changeTab }) => (
     <Container fluid="true">
@@ -44,7 +45,7 @@ const ProjectView = ({ project, changeTab }) => (
         ))}
         <Row>
             <Col>
-                <Button onClick={() => (console.log("raum neu clicked"))}>Neuer Raum</Button>
+            <RaumAdd project={project}/>
             </Col>
         </Row>
         {/* Bauteile */}

@@ -49,5 +49,8 @@ export const Projekt = types
         /* Räume */
         remove(raum){
             destroy(raum)
+        },
+        addRaum(raum){
+            self.Räume.push(raum)
         }
     }))
