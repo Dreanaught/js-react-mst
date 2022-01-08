@@ -3,14 +3,15 @@ import { Element } from "./Element"
 
 export const Raum = types
     .model({
-        Name: types.identifier,
+        id: types.identifier,
+        Name: types.string,
         Geschoss: types.string,
         Auslegungsinnentemperatur: types.number,
         Raumbreite: types.number,
         Raumlänge: types.number,
         Raumhöhe: types.number,
         Deckendicke: types.number,
-        Elemente: types.array(Element)
+        Elemente: types.optional(types.array(Element), [])
     })
     .actions(self => ({
         addElement(element) {

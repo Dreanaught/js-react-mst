@@ -9,6 +9,7 @@ it("Test calculated properties of Raum", () => {
             uWert: 1.3
         }],
         Räume : [{
+            id: '1',
             Name: "Raum1",
             Geschoss: "EG",
             Auslegungsinnentemperatur: 20,

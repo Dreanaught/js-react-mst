@@ -60,6 +60,7 @@
     ],
     "Räume": [
       {
+        "id": "1",
         "Name": "Raum1",
         "Geschoss": "EG",
         "Auslegungsinnentemperatur": 20,
@@ -81,6 +82,7 @@
         ]
       },
       {
+        "id": "2",
         "Name": "Raum2",
         "Geschoss": "EG",
         "Auslegungsinnentemperatur": 20,
