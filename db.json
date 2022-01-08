@@ -102,6 +102,17 @@
             "temperatur_Anpassung": 1
           }
         ]
+      },
+      {
+        "id": "f4f54586-1de4-40a5-b56c-68735205616a",
+        "Name": "Wohnen",
+        "Geschoss": "EG",
+        "Auslegungsinnentemperatur": 20,
+        "Raumbreite": 4.27,
+        "Raumlänge": 4.12,
+        "Raumhöhe": 2.6,
+        "Deckendicke": 0.26,
+        "Elemente": []
       }
     ]
   }
