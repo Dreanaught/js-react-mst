@@ -43,7 +43,7 @@ const RaumView = ({ raum }) => (
                     Raumbreite
                 </Col>
                 <Col>
-                    {raum.Raumbreite}
+                    {raum.Raumbreite.toFixed(2)}
                 </Col>
             </Row>
             <Row>
@@ -51,7 +51,7 @@ const RaumView = ({ raum }) => (
                     Raumfläche
                 </Col>
                 <Col>
-                    {raum.Raumfläche}
+                    {raum.Raumfläche.toFixed(2)}
                 </Col>
             </Row>
             <Row>
@@ -59,7 +59,7 @@ const RaumView = ({ raum }) => (
                     Geschosshöhe
                 </Col>
                 <Col>
-                    {raum.Geschosshöhe}
+                    {raum.Geschosshöhe.toFixed(2)}
                 </Col>
             </Row>
             <Row>
@@ -67,7 +67,7 @@ const RaumView = ({ raum }) => (
                     Deckendicke
                 </Col>
                 <Col>
-                    {raum.Deckendicke}
+                    {raum.Deckendicke.toFixed(2)}
                 </Col>
             </Row>
             <Row>
@@ -75,7 +75,7 @@ const RaumView = ({ raum }) => (
                     Raumhöhe
                 </Col>
                 <Col>
-                    {raum.Raumhöhe}
+                    {raum.Raumhöhe.toFixed(2)}
                 </Col>
             </Row>
             <Row>
@@ -83,7 +83,7 @@ const RaumView = ({ raum }) => (
                     Raumvolumen
                 </Col>
                 <Col>
-                    {raum.Raumvolumen}
+                    {raum.Raumvolumen.toFixed(2)}
                 </Col>
             </Row>
             <Row>
