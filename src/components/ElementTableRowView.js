@@ -11,9 +11,9 @@ class ElementTableRowView extends Component  {
                 <td>{element.Anzahl}</td>
                 <td>{element.Breite}</td>
                 <td>{element.Länge_Höhe}</td>
-                <td>{element.Bruttofläche}</td>
-                <td>{element.Abzugsfläche?element.Abzugsfläche:'-'}</td>
-                <td>{element.Nettofläche}</td>
+                <td>{element.Bruttofläche.toFixed(1)}</td>
+                <td>{element.Abzugsfläche?element.Abzugsfläche.toFixed(1):'-'}</td>
+                <td>{element.Nettofläche.toFixed(1)}</td>
                 <td>{element.grenzt_an}</td>
                 <td>{element.angrenzendeTemperatur?element.angrenzendeTemperatur:'-'}</td>
                 <td>{element.temperatur_Anpassung.toFixed(2)}</td>
