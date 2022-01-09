@@ -1,13 +1,25 @@
 {
   "project": {
-    "Norm_Außentemperatur": -16,
-    "Wäremebrückenzuschlag": 0.1,
+    "Norm_Außentemperatur": -14,
+    "Wäremebrückenzuschlag": 0.05,
     "Bauteildefinitionen": [
       {
         "id": "1",
         "Kurzbezeichner": "AW",
-        "Kommentar": "Außenwand 30",
-        "uWert": 1.3
+        "Kommentar": "Außenwand 41",
+        "uWert": 0.34
+      },
+      {
+        "id": "2",
+        "Kurzbezeichner": "AW",
+        "Kommentar": "Außenwand 31",
+        "uWert": 0.33
+      },
+      {
+        "id": "3",
+        "Kurzbezeichner": "AF",
+        "Kommentar": "",
+        "uWert": 1.4
       },
       {
         "id": "14ec58c8-d854-492a-b27b-80f07e714c37",
@@ -112,7 +124,35 @@
         "Raumlänge": 4.12,
         "Raumhöhe": 2.6,
         "Deckendicke": 0.26,
-        "Elemente": []
+        "Elemente": [
+          {
+            "Orientierung": "N",
+            "Bauteil": "1",
+            "Anzahl": 1,
+            "Breite": 4.69,
+            "Länge_Höhe": 2.86,
+            "grenzt_an": "e",
+            "temperatur_Anpassung": 1
+          },
+          {
+            "Orientierung": "O",
+            "Bauteil": "2",
+            "Anzahl": 1,
+            "Breite": 4.65,
+            "Länge_Höhe": 2.86,
+            "grenzt_an": "e",
+            "temperatur_Anpassung": 1
+          },
+          {
+            "Orientierung": "",
+            "Bauteil": "3",
+            "Anzahl": 1,
+            "Breite": 1.01,
+            "Länge_Höhe": 1.42,
+            "grenzt_an": "e",
+            "temperatur_Anpassung": 1
+          }
+        ]
       }
     ]
   }
