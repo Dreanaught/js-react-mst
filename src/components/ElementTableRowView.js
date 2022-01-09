@@ -15,7 +15,7 @@ class ElementTableRowView extends Component  {
                 <td>{element.Abzugsfläche?element.Abzugsfläche.toFixed(1):'-'}</td>
                 <td>{element.Nettofläche.toFixed(1)}</td>
                 <td>{element.grenzt_an}</td>
-                <td>{element.angrenzendeTemperatur?element.angrenzendeTemperatur:'-'}</td>
+                <td>{element.angrenzende_Temperatur?element.angrenzende_Temperatur:'-'}</td>
                 <td>{element.temperatur_Anpassung.toFixed(2)}</td>
                 <td>{element.Bauteil.uWert}</td>
                 <td>{element.korrekturwertWäremebrücken}</td>
