@@ -1,6 +1,6 @@
 import React from "react"
 import { observer } from "mobx-react"
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup"
 
@@ -9,60 +9,66 @@ const ElementAddForm = (props) => {
     const bauelemente = raum.Bauelemente
     const formik = useFormik({
         initialValues: {
-            bauteil: '',
-            orientierung: '',
-            anzahl: '1',
-            firstName: '',
-            lastName: '',
-            email: '',
+            Orientierung: '',
+            Bauteil: '',
+            Anzahl: 1,
+            Breite: '',
+            Länge_Höhe: '',
+            grenzt_an: 'e',
+            angrenzende_Temperatur: undefined,
+            temperatur_Anpassung: '',
         },
         validationSchema: Yup.object({
-            bauteil: Yup.number()
+            Bauteil: Yup.string()
                 .required('Required'),
-            anzahl: Yup.number()
+            Anzahl: Yup.number()
                 .min(1, 'Must be greater equal 1')
                 .required('Required'),
-            firstName: Yup.string()
-                .min(3, 'Must be 3 characters or more')
-                .max(15, 'Must be 15 characters or less')
+            Breite: Yup.number()
                 .required('Required'),
-            lastName: Yup.string()
-                .max(20, 'Must be 20 characters or less')
+            Länge_Höhe: Yup.number()
                 .required('Required'),
-            email: Yup.string().email('Invalid email address').required('Required'),
+            grenzt_an: Yup.string()
+                .required('Required'),
+            angrenzende_Temperatur: Yup.number(),
+            temperatur_Anpassung: Yup.number()
+                .required('Required'),
         }),
         onSubmit: values => {
             //alert(JSON.stringify(values, null, 2));
+            props.onSubmit(values)
+            formik.resetForm()
         }
     });
     return (
         <Form
             noValidate
             onSubmit={formik.handleSubmit}
+            id="AddElement"
         >
-            <Form.Group controlId="bauteil">
+            <Form.Group controlId="Bauteil">
                 <Form.Label>Bauteil</Form.Label>
                 <Form.Select
-                    value={formik.values.bauteil}
+                    value={formik.values.Bauteil}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    isInvalid={formik.touched.bauteil && !!formik.errors.bauteil}>
+                    isInvalid={formik.touched.Bauteil && !!formik.errors.Bauteil}>
                     <option>Wähle Bauteil</option>
                     {Array.from(bauelemente).map((bauelement, idx) => (
                         <option key={idx} value={bauelement.id}>{bauelement.Kurzbezeichner + ' ' + bauelement.uWert + ' W\\m²K'}</option>
                     ))}
                 </Form.Select>
                 <Form.Control.Feedback type="invalid">
-                    {formik.errors.bauteil}
+                    {formik.errors.Bauteil}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="orientierung">
+            <Form.Group controlId="Orientierung">
                 <Form.Label>Orientierung</Form.Label>
                 <Form.Select
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.orientierung}
-                    isInvalid={formik.touched.orientierung && !!formik.errors.orientierung}>
+                    value={formik.values.Orientierung}
+                    isInvalid={formik.touched.Orientierung && !!formik.errors.Orientierung}>
                     <option value=''></option>
                     <option value='N'>N</option>
                     <option value='S'>S</option>
@@ -71,66 +77,91 @@ const ElementAddForm = (props) => {
                     <option value='H'>H</option>
                 </Form.Select>
                 <Form.Control.Feedback type="invalid">
-                    {formik.errors.orientierung}
+                    {formik.errors.Orientierung}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="anzahl">
+            <Form.Group controlId="Anzahl">
                 <Form.Label>Anzahl</Form.Label>
                 <Form.Control
                     type="number"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.anzahl}
-                    isInvalid={formik.touched.anzahl && !!formik.errors.anzahl}
+                    value={formik.values.Anzahl}
+                    isInvalid={formik.touched.Anzahl && !!formik.errors.Anzahl}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {formik.errors.anzahl}
+                    {formik.errors.Anzahl}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="firstName">
-                <Form.Label>First Name</Form.Label>
+            <Form.Group controlId="Breite">
+                <Form.Label>Breite</Form.Label>
                 <Form.Control
-                    name="firstName"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.firstName}
-                    isInvalid={formik.touched.firstName && !!formik.errors.firstName}
-                />
-                <Form.Control.Feedback type="invalid">
-                    {formik.errors.firstName}
-                </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control
-                    name="lastName"
-                    type="text"
+                    type="number"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.lastName}
-                    isInvalid={formik.touched.lastName && !!formik.errors.lastName}
+                    value={formik.values.Breite}
+                    isInvalid={formik.touched.Breite && !!formik.errors.Breite}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {formik.errors.lastName}
+                    {formik.errors.Breite}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="email">
-                <Form.Label>Email Address</Form.Label>
+            <Form.Group controlId="Länge_Höhe">
+                <Form.Label>Länge_Höhe</Form.Label>
                 <Form.Control
-                    name="email"
-                    type="email"
+                    type="number"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.email}
-                    isInvalid={formik.touched.email && !!formik.errors.email}
+                    value={formik.values.Länge_Höhe}
+                    isInvalid={formik.touched.Länge_Höhe && !!formik.errors.Länge_Höhe}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {formik.errors.email}
+                    {formik.errors.Länge_Höhe}
                 </Form.Control.Feedback>
             </Form.Group>
-
-            <Button type="submit">Submit</Button>
+            <Form.Group controlId="grenzt_an">
+                <Form.Label>grenzt_an</Form.Label>
+                <Form.Select
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.grenzt_an}
+                    isInvalid={formik.touched.grenzt_an && !!formik.errors.grenzt_an}>
+                    <option value='e'>e, Außenluft</option>
+                    <option value='b'>b, N-R beheizt</option>
+                    <option value='u'>u, N-R unbeheizt </option>
+                    <option value='g'>g, Erdreich</option>
+                </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.grenzt_an}
+                </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="angrenzende_Temperatur">
+                <Form.Label>angrenzende_Temperatur</Form.Label>
+                <Form.Control
+                    type="number"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.angrenzende_Temperatur}
+                    isInvalid={formik.touched.angrenzende_Temperatur && !!formik.errors.angrenzende_Temperatur}
+                />
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.angrenzende_Temperatur}
+                </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="temperatur_Anpassung">
+                <Form.Label>temperatur_Anpassung</Form.Label>
+                <Form.Control
+                    type="number"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.temperatur_Anpassung}
+                    isInvalid={formik.touched.temperatur_Anpassung && !!formik.errors.temperatur_Anpassung}
+                />
+                <Form.Control.Feedback type="invalid">
+                    {formik.errors.temperatur_Anpassung}
+                </Form.Control.Feedback>
+            </Form.Group>
+            
         </Form>
     );
 };

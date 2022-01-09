@@ -15,29 +15,16 @@ class ElementAdd extends Component {
         this.state = {
             show: false
         };
-
-        this.state = {
-            element: Element.create({
-                Orientierung: "",
-                Bauteil: 1,
-                Anzahl: 1,
-                Breite: 0,
-                Länge_Höhe: 0,
-                grenzt_an: "",
-                angrenzende_Temperatur: 20,
-                temperatur_Anpassung: 0
-            })
-        }
     }
 
     handleClose() {
         this.setState({ show: false });
     }
 
-    handleAdd() {
-        //this.props.raum.addElement(this.state.element)
+    handleAdd(values) {
+        this.props.raum.addElement(Element.create(values))
 
-        this.setState({ show: false });
+        //this.setState({ show: false });
     }
 
     handleShow() {
@@ -56,11 +43,11 @@ class ElementAdd extends Component {
                         <Modal.Title>Füge neues Element zu {raum.Name} hinzu</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <ElementAddForm raum={raum}/>
+                        <ElementAddForm raum={raum} onSubmit={this.handleAdd}/>
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button bsstyle="primary" onClick={this.handleAdd}>Add</Button>
+                        <Button form="AddElement" type="submit" bsstyle="primary">Add</Button>
                     </Modal.Footer>
                 </Modal>
 
