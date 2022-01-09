@@ -53,11 +53,21 @@ export const Element = types.model({
             return self.Bauteil.uWert + self.korrekturwertWäremebrücken
         },
         get Wärmeverlustkoeffizient() {
-            return self.Nettofläche * self.korrigierter_uWert
+            const fläche = self.Nettofläche
+            const uWert = self.korrigierter_uWert
+            // if b
+            if(self.grenzt_an == 'b'){
+                const ro_i = getParent(self, 2).Auslegungsinnentemperatur
+                const ro_j = self.angrenzende_Temperatur
+                const ro_e = getParent(self, 2).NormAußentemperatur
+                const factor = (ro_i - ro_j)/(ro_i - ro_e)
+                return factor * fläche * uWert
+            }
+            return fläche * uWert
         },
         get Transmissionswärmeverlust() {
             const auslegungsInnentemperatur = getParent(self, 2).Auslegungsinnentemperatur
-            const angrenzendeTemperatur = self.angrenzende_Temperatur ? self.angrenzende_Temperatur : getParent(self, 2).NormAußentemperatur
-            return Math.ceil(self.Bauteilfläche * self.korrigierter_uWert * (auslegungsInnentemperatur - angrenzendeTemperatur))
+            const angrenzendeTemperatur = getParent(self, 2).NormAußentemperatur
+            return Math.round(self.Wärmeverlustkoeffizient * (auslegungsInnentemperatur - angrenzendeTemperatur))
         }
     }))
