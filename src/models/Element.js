@@ -7,9 +7,8 @@ export const Element = types.model({
     Anzahl: types.number,
     Breite: types.number,
     Länge_Höhe: types.number, // teilen und types.maype verwenden
-    Abzugsfläche: types.maybe(types.number), //über parent auf den folgenden einträgen ziehen, bis eine andre orientierung kommt, müsste also hier in einer noch zu definierenden view stehen
     grenzt_an: types.string, // ist eigentlich eine Referenz auf ein enum
-    angrenzende_Temperatur: types.number, // von Hand eintragen, ergibt sich später aus der Zeichnung des Gebäudes
+    angrenzende_Temperatur: types.maybe(types.number), // von Hand eintragen, ergibt sich später aus der Zeichnung des Gebäudes
     temperatur_Anpassung: types.number // von Hand eintragen, ist eigentlich ein errechneter Wert
 })
 .views( self => ({
@@ -22,6 +21,10 @@ export const Element = types.model({
             return self.Bruttofläche - self.Abzugsfläche    
         }
         return self.Bruttofläche
+    },
+    get Abzugsfläche(){
+        
+        return 0
     },
     get Nettofläche() {
         if(self.Abzugsfläche){
@@ -40,6 +43,8 @@ export const Element = types.model({
         return self.Nettofläche * self.korrigierter_uWert
     },
     get Transmissionswärmeverlust() {
-        return Math.ceil(self.Bauteilfläche * self.korrigierter_uWert * (getParent(self,2).Auslegungsinnentemperatur - self.angrenzende_Temperatur))
+        const auslegungsInnentemperatur = getParent(self,2).Auslegungsinnentemperatur
+        const angrenzendeTemperatur = self.angrenzende_Temperatur?self.angrenzende_Temperatur:getParent(self,2).NormAußentemperatur
+        return Math.ceil(self.Bauteilfläche * self.korrigierter_uWert * (auslegungsInnentemperatur - angrenzendeTemperatur))
     }
 }))
