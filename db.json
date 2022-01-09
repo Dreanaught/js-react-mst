@@ -22,6 +22,18 @@
         "uWert": 1.4
       },
       {
+        "id": "4",
+        "Kurzbezeichner": "AT",
+        "Kommentar": "",
+        "uWert": 1.4
+      },
+      {
+        "id": "5",
+        "Kurzbezeichner": "IW",
+        "Kommentar": "11,5cm",
+        "uWert": 1.83
+      },
+      {
         "id": "14ec58c8-d854-492a-b27b-80f07e714c37",
         "Kurzbezeichner": "AF",
         "Kommentar": "Fenster 1.10x1.35",
@@ -151,6 +163,25 @@
             "Länge_Höhe": 1.42,
             "grenzt_an": "e",
             "temperatur_Anpassung": 1
+          },
+          {
+            "Orientierung": "",
+            "Bauteil": "4",
+            "Anzahl": 1,
+            "Breite": 1.01,
+            "Länge_Höhe": 2.26,
+            "grenzt_an": "e",
+            "temperatur_Anpassung": 1
+          },
+          {
+            "Orientierung": "W",
+            "Bauteil": "5",
+            "Anzahl": 1,
+            "Breite": 2.63,
+            "Länge_Höhe": 2.86,
+            "grenzt_an": "b",
+            "angrenzende_Temperatur": 24,
+            "temperatur_Anpassung": -0.12
           }
         ]
       }
