@@ -37,7 +37,7 @@ const BauteilAddForm = (props) => {
         <Form
             noValidate
             onSubmit={formik.handleSubmit}
-            id="AddElement"
+            id="AddBauteil"
         >
             <Form.Group controlId="Kurzbezeichner">
                 <Form.Label>Typ</Form.Label>

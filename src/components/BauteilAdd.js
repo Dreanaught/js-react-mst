@@ -52,7 +52,7 @@ class BauteilAdd extends Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button form="AddElement" type="submit" bsstyle="primary">Add</Button>
+                        <Button form="AddBauteil" type="submit" bsstyle="primary">Add</Button>
                     </Modal.Footer>
                 </Modal>
 
