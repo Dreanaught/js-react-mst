@@ -9,11 +9,11 @@ export const Element = types.model({
     Länge_Höhe: types.number, // teilen und types.maype verwenden
     grenzt_an: types.string, // ist eigentlich eine Referenz auf ein enum
     angrenzende_Temperatur: types.maybe(types.number), // von Hand eintragen, ergibt sich später aus der Zeichnung des Gebäudes
-    temperatur_Anpassung: types.number // von Hand eintragen, ist eigentlich ein errechneter Wert
 })
     .views(self => ({
         get Bruttofläche() {
-            return self.Breite * self.Länge_Höhe * self.Anzahl
+            const fl = self.Breite * self.Länge_Höhe * self.Anzahl
+            return Number.parseFloat(fl.toFixed(1))
         },
         get Bauteilfläche() {
             // Abzugsfläche ist im Modell als type.maybe definiert und kann daher undefined sein
@@ -37,37 +37,73 @@ export const Element = types.model({
                 }
                 abzugsfläche += elemente[i].Nettofläche
             }
-            return abzugsfläche
+            return Number.parseFloat(abzugsfläche.toFixed(1))
         },
         get Nettofläche() {
+            let fl = self.Bruttofläche
             if (self.Abzugsfläche) {
-                return self.Bruttofläche - self.Abzugsfläche
-            } else {
-                return self.Bruttofläche
+                fl = self.Bruttofläche - self.Abzugsfläche
             }
+            return Number.parseFloat(fl.toFixed(1))
+
+        },
+        get korrekturfaktor() {
+            const ro_i = getParent(self, 2).Auslegungsinnentemperatur
+            const ro_j = self.angrenzende_Temperatur
+            const ro_e = getParent(self, 2).NormAußentemperatur
+            const ro_me = getParent(self, 2).NormAußentemperaturJahresmittel
+
+            let factor
+            if (self.grenzt_an === 'e') {
+                factor = 1.0
+            }
+            if (self.grenzt_an === 'u') {
+                factor = 0.0
+            }
+            if (self.grenzt_an === 'g') {
+                const f_g2 = (ro_i - ro_me) / (ro_i - ro_e)
+                factor = f_g2
+            }
+            if (self.grenzt_an === 'b') {
+                const f_ij = (ro_i - ro_j) / (ro_i - ro_e)
+                factor = f_ij
+            }
+            return Number.parseFloat(factor.toFixed(2))
         },
         get korrekturwertWäremebrücken() {
+            if(self.Bauteil.isInterior){
+                return null
+            }
             return getParent(self, 4).Wäremebrückenzuschlag
         },
         get korrigierter_uWert() {
+            if (self.grenzt_an === 'g') {
+                return getParent(self, 2).uEquiv(self.Bauteil.uWert)
+            }
             return self.Bauteil.uWert + self.korrekturwertWäremebrücken
         },
         get Wärmeverlustkoeffizient() {
             const fläche = self.Nettofläche
             const uWert = self.korrigierter_uWert
             // if b
-            if(self.grenzt_an == 'b'){
-                const ro_i = getParent(self, 2).Auslegungsinnentemperatur
-                const ro_j = self.angrenzende_Temperatur
-                const ro_e = getParent(self, 2).NormAußentemperatur
-                const factor = (ro_i - ro_j)/(ro_i - ro_e)
-                return factor * fläche * uWert
+            if (self.grenzt_an === 'b') {
+                const f_ij = self.korrekturfaktor
+                return f_ij * fläche * uWert
+            } else if (self.grenzt_an === 'g') {
+                const f_g1 = 1.45
+                const f_g2 = self.korrekturfaktor
+                const Gw = 1.0
+
+                return f_g1 * f_g2 * fläche * uWert * Gw
             }
             return fläche * uWert
         },
         get Transmissionswärmeverlust() {
             const auslegungsInnentemperatur = getParent(self, 2).Auslegungsinnentemperatur
             const angrenzendeTemperatur = getParent(self, 2).NormAußentemperatur
-            return Math.round(self.Wärmeverlustkoeffizient * (auslegungsInnentemperatur - angrenzendeTemperatur))
+            const tempDiff = auslegungsInnentemperatur - angrenzendeTemperatur
+            const h_T = self.Wärmeverlustkoeffizient
+            const Phi_T = h_T * tempDiff
+            return Number.parseFloat(Phi_T.toFixed())
         }
     }))

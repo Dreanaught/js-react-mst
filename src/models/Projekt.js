@@ -4,8 +4,10 @@ import { Raum } from "./Room"
 
 export const Projekt = types
     .model({
-        Norm_Außentemperatur: types.optional(types.number, -16),
+        Norm_Außentemperatur: types.optional(types.number, -14),
+        NormAußentemperaturJahresmittel: types.optional(types.number, 6.3),
         Wäremebrückenzuschlag: types.optional(types.number, 0.1),
+        Grundwassertiefe: types.optional(types.number, 0.0),
         Bauteildefinitionen: types.array(Bauteil),
         Räume: types.array(Raum)
     })

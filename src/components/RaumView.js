@@ -106,7 +106,7 @@ const RaumView = ({ raum }) => (
                     Erdreich ber. Umf.
                 </Col>
                 <Col>
-                    0.0
+                    {raum.ErdreichBerUmfang}
                 </Col>
             </Row>
             <Row>
@@ -114,7 +114,7 @@ const RaumView = ({ raum }) => (
                     Grundwassertiefe
                 </Col>
                 <Col>
-                    5.0
+                    {raum.parent.Grundwassertiefe}
                 </Col>
             </Row>
             <Row>
@@ -122,7 +122,7 @@ const RaumView = ({ raum }) => (
                     B'-Wert raumweise
                 </Col>
                 <Col>
-                    5.0
+                    {raum.B_Strich}
                 </Col>
             </Row>
         </Container>
